@@ -1,0 +1,1 @@
+C:\Users\Jess\AndroidStudioProjects\Tesse\OpenCvLibrary\build\intermediates\cxx\RelWithDebInfo\374p2wt1\obj\x86_64
