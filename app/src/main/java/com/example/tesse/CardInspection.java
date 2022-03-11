@@ -84,10 +84,10 @@ public class CardInspection extends AppCompatActivity {
             String sName;
 
 
-            if (parseJSON.currentStudentMetroCard != null) {
+            if (parseJSON.currentCardThis != null) {
 
-                sNumber = parseJSON.currentStudentMetroCard.getNumber();
-                sName = parseJSON.currentStudentMetroCard.getName();
+                sNumber = parseJSON.currentCardThis.getNumber();
+                sName = parseJSON.currentCardThis.getName();
 
 
                 cardNumber.setText(Integer.toString(sNumber));

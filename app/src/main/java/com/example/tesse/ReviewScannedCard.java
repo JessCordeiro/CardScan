@@ -56,7 +56,7 @@ public class ReviewScannedCard extends AppCompatActivity {
                     cardTypeChoice = 0;
 
                     if (!MainActivity.recognizedCardCode.isEmpty()) {
-                        parseJSON.fetchStudentInfoFromCode(
+                        parseJSON.fetchCardInfoFromCode(
                                 MainActivity.recognizedCardCode,
                                 getApplicationContext());
                         if (parseJSON.currentCard != null)
@@ -67,10 +67,10 @@ public class ReviewScannedCard extends AppCompatActivity {
                     cardTypeChoice = 1;
 
                     if (!MainActivity.recognizedCardCode.isEmpty()) {
-                        parseJSON.fetchStudentInfoFromCodeMetro(
+                        parseJSON.fetchCardInfoFromCodeThis(
                                 MainActivity.recognizedCardCode,
                                 getApplicationContext());
-                        if (parseJSON.currentStudentMetroCard != null)
+                        if (parseJSON.currentCardThis != null)
                             CardCodeFound = true;
                     }
                 } else

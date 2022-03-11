@@ -20,12 +20,12 @@ public class parseJSON {
     public static HashMap<String, Card> codeToCard;
     public static Card currentCard;
 
-    public static HashMap<String, ItiCreditCard> codeToItiCard;
-    public static ItiCreditCard currentStudentMetroCard;
+    public static HashMap<String, ThisCreditCard> codeToThisCard;
+    public static ThisCreditCard currentCardThis;
     public static boolean itiCard = false;
 
 
-    public static void fetchStudentInfoFromCode(String cardCode, Context context) {
+    public static void fetchCardInfoFromCode(String cardCode, Context context) {
 
         if (codeToCard == null) //first time only, supposing we're dealing with one JSON file only
             loadJSONIntoMap(context);
@@ -34,12 +34,12 @@ public class parseJSON {
 
     }
 
-    public static void fetchStudentInfoFromCodeMetro(String itiCardCode, Context context) {
+    public static void fetchCardInfoFromCodeThis(String itiCardCode, Context context) {
 
-        if (codeToItiCard == null) //first time only, supposing we're dealing with one JSON file only
+        if (codeToThisCard == null) //first time only, supposing we're dealing with one JSON file only
             loadJSONIntoMapIti(context);
 
-        currentStudentMetroCard = codeToItiCard.get(itiCardCode);
+        currentCardThis = codeToThisCard.get(itiCardCode);
 
     }
 
@@ -79,12 +79,12 @@ public class parseJSON {
 
     private static void loadJSONIntoMapIti(Context context) {
         //load the json string from the json file of names list
-        currentJsonStr = loadJSONFromAssetsIti(context);
+        currentJsonStr = loadJSONFromAssetsThis(context);
 
         try {
             //parse the json string
             JSONArray jsonArray = new JSONArray(currentJsonStr);
-            codeToItiCard = new HashMap<>();
+            codeToThisCard = new HashMap<>();
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject currentCard = (JSONObject) jsonArray.get(i);
@@ -97,8 +97,8 @@ public class parseJSON {
 
 
                 //add the current student to the map
-                ItiCreditCard itiCreditCard = new ItiCreditCard(number, name);
-                codeToItiCard.put(name, itiCreditCard);
+                ThisCreditCard thisCreditCard = new ThisCreditCard(number, name);
+                codeToThisCard.put(name, thisCreditCard);
             }
 
 
@@ -133,11 +133,11 @@ public class parseJSON {
     }
 
 
-    private static String loadJSONFromAssetsIti(Context context) {
+    private static String loadJSONFromAssetsThis(Context context) {
 
         String jsonStr = null;
         try {
-            InputStream is = context.getAssets().open("JSON/Iti_NamesList.json");
+            InputStream is = context.getAssets().open("JSON/This_NamesList.json");
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

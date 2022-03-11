@@ -1,10 +1,10 @@
 package com.example.tesse;
 
-public class ItiCreditCard {
+public class ThisCreditCard {
     private int Number;
     private String Name;
 
-    public ItiCreditCard(int N, String E) {
+    public ThisCreditCard(int N, String E) {
         Number = N;
         Name = E;
 
