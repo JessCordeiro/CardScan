@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
         inputImgMat = new Mat();
         mat.copyTo(inputImgMat);
 
-        scannedCardMat = new Mat();
+        scannedCardMat = ImgProcPipeline.scanCard(inputImgMat, scannedCardMat, NEW_HEIGHT, FINAL_WIDTH, FINAL_HEIGHT);
         ImgProcPipeline.scanCard(inputImgMat, scannedCardMat, NEW_HEIGHT, FINAL_WIDTH, FINAL_HEIGHT);
 
         if (!scannedCardMat.empty()) {
@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
         mat.copyTo(inputImgMat);
 
         //Second, call the scanCard img processing method to get the scanned card mat
-        scannedCardMat = new Mat();
+        scannedCardMat = ImgProcPipeline.scanCard(inputImgMat, scannedCardMat, NEW_HEIGHT, FINAL_WIDTH, FINAL_HEIGHT);
         ImgProcPipeline.scanCard(inputImgMat, scannedCardMat, NEW_HEIGHT, FINAL_WIDTH, FINAL_HEIGHT);
 
         //Third, call the detectFaceInCard method to get the detected face mat

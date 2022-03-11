@@ -36,7 +36,7 @@ public class MyAsyncTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... arg) {
 
-        MainActivity.processBitmapImg(MainActivity.capturedImg, context);
+        MainActivity.processBitmapImg2(MainActivity.capturedImg, context);
        return null;
 
     }

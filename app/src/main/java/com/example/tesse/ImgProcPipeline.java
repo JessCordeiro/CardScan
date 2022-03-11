@@ -389,7 +389,7 @@ public class ImgProcPipeline {
 
 
     /*  Specifying the New height resizing level as well as the final width and height of the card to be scanned  */
-    public static void scanCard(Mat inputImg, Mat outputImg, double NEW_HEIGHT, int FINAL_WIDTH, int FINAL_HEIGHT) {
+    public static Mat scanCard(Mat inputImg, Mat outputImg, double NEW_HEIGHT, int FINAL_WIDTH, int FINAL_HEIGHT) {
         Mat origImg = new Mat();
         inputImg.copyTo(origImg);
 
@@ -404,7 +404,7 @@ public class ImgProcPipeline {
         if (cardFourPtsContour != null)
             transformCardToRect(rotatedOrigImg, outputImg, cardFourPtsContour, FINAL_WIDTH, FINAL_HEIGHT);
         else
-            return;
+            return new Mat();
 
         currentBitmap = Bitmap.createBitmap(outputImg.width(), outputImg.height(), Bitmap.Config.ARGB_8888);
         Utils.matToBitmap(outputImg, currentBitmap);
@@ -412,6 +412,8 @@ public class ImgProcPipeline {
         scannedCardMat = new Mat();
         Bitmap bm = currentBitmap.copy(Bitmap.Config.ARGB_8888, true);
         Utils.bitmapToMat(bm, scannedCardMat); //for OCR
+
+        return scannedCardMat;
     }
 
 
